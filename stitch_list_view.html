@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Garden Directory - Developer Portfolio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1111d4",
+                        "primary-light": "#4444ff",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                        "surface-dark": "#1a1a2e",
+                        "surface-border": "#2a2a45",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["Fira Code", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .mesh-bg {
+            background-color: #101022;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(238,49%,20%,0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(238,49%,20%,0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(238,49%,20%,0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(238,49%,20%,0.3) 0px, transparent 50%);
+        }
+        .grid-lines {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(35, 35, 72, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(35, 35, 72, 0.1) 1px, transparent 1px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #323267;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4444ff;
+        }
+        .row-hover-effect:hover .telemetry-preview {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden h-screen w-screen selection:bg-primary selection:text-white flex flex-col">
+<div class="fixed inset-0 z-0 mesh-bg"></div>
+<div class="fixed inset-0 z-0 grid-lines opacity-50"></div>
+<div class="fixed top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px] animate-pulse-slow pointer-events-none"></div>
+<div class="fixed bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[120px] animate-pulse-slow pointer-events-none" style="animation-delay: 2s;"></div>
+<div class="relative z-10 flex flex-col h-full w-full">
+<header class="flex-none flex items-center justify-between whitespace-nowrap px-6 py-4 border-b border-surface-border bg-background-dark/95 backdrop-blur-md">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-lg">forest</span>
+</div>
+<div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">&lt;Digital Garden /&gt;</h2>
+<p class="text-xs text-slate-400 font-mono">v2.4.0 • Directory Mode</p>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-1 bg-surface-dark/50 p-1 rounded-lg border border-surface-border">
+<button class="flex items-center gap-2 px-3 py-1.5 text-slate-400 hover:text-white hover:bg-white/5 rounded text-sm font-medium transition-all">
+<span class="material-symbols-outlined text-[16px]">hub</span>
+                    Map View
+                </button>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded text-sm font-medium shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-[16px]">view_list</span>
+                    List View
+                </button>
+</div>
+<div class="flex gap-3">
+<button class="hidden sm:flex h-9 px-4 items-center justify-center rounded-lg bg-surface-dark border border-surface-border hover:border-primary/50 text-white text-sm font-bold transition-colors">
+<span class="mr-2 material-symbols-outlined text-[18px]">terminal</span>
+                    Terminal
+                </button>
+<button class="flex h-9 px-4 items-center justify-center rounded-lg bg-primary hover:bg-primary-light text-white text-sm font-bold shadow-lg shadow-primary/25 transition-all">
+<span class="mr-2 material-symbols-outlined text-[18px]">mail</span>
+                    Contact
+                </button>
+</div>
+</header>
+<main class="flex-1 relative overflow-hidden flex flex-col md:flex-row">
+<div class="flex-1 flex flex-col h-full overflow-hidden border-r border-surface-border">
+<div class="flex items-center justify-between px-6 py-4 border-b border-surface-border bg-surface-dark/30">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-background-dark border border-surface-border rounded-md text-sm text-white focus:ring-1 focus:ring-primary focus:border-primary outline-none w-64 font-mono placeholder:text-slate-600" placeholder="Search directory..." type="text"/>
+</div>
+<div class="h-6 w-px bg-surface-border"></div>
+<div class="flex gap-2 text-xs font-mono">
+<button class="px-2 py-1 rounded bg-primary/20 text-primary-light border border-primary/30">ALL</button>
+<button class="px-2 py-1 rounded hover:bg-surface-dark text-slate-400 transition-colors">PROJECTS</button>
+<button class="px-2 py-1 rounded hover:bg-surface-dark text-slate-400 transition-colors">LABS</button>
+<button class="px-2 py-1 rounded hover:bg-surface-dark text-slate-400 transition-colors">THOUGHTS</button>
+</div>
+</div>
+<div class="text-xs text-slate-500 font-mono">
+                        9 ENTRIES FOUND
+                    </div>
+</div>
+<div class="grid grid-cols-12 px-6 py-3 border-b border-surface-border bg-surface-dark/50 text-xs font-mono text-slate-400 uppercase tracking-wider sticky top-0 z-20">
+<div class="col-span-5 md:col-span-4 flex items-center gap-2 cursor-pointer hover:text-white">
+<span>Name</span>
+<span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</div>
+<div class="col-span-2 hidden md:block cursor-pointer hover:text-white">Category</div>
+<div class="col-span-3 md:col-span-2 cursor-pointer hover:text-white">Status</div>
+<div class="col-span-2 hidden md:block cursor-pointer hover:text-white">Tech Stack</div>
+<div class="col-span-4 md:col-span-2 text-right cursor-pointer hover:text-white">Last Commit</div>
+</div>
+<div class="overflow-y-auto custom-scrollbar flex-1 pb-10">
+<div class="group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-white/5 transition-colors items-center cursor-pointer relative">
+<div class="col-span-5 md:col-span-4 flex items-center gap-3">
+<div class="p-2 rounded bg-surface-dark border border-surface-border text-primary group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white group-hover:text-primary-light transition-colors">SaaS Dashboard V2</h3>
+<p class="text-[10px] text-slate-500 font-mono hidden sm:block">/projects/analytics-suite</p>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-mono uppercase">Project</span>
+</div>
+<div class="col-span-3 md:col-span-2 flex items-center">
+<div class="flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
+<span class="text-xs text-slate-300 font-mono">Stable</span>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+<span>React,</span>
+<span>D3.js</span>
+</div>
+<div class="col-span-4 md:col-span-2 text-right font-mono text-xs text-slate-400">
+                            2 days ago
+                        </div>
+<div class="telemetry-preview hidden absolute left-[60%] top-1/2 -translate-y-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-x-4">
+<div class="w-64 bg-surface-dark/95 backdrop-blur-xl border border-surface-border rounded-lg shadow-2xl p-3">
+<div class="flex items-center justify-between mb-2 border-b border-surface-border/50 pb-2">
+<span class="text-[10px] font-mono text-primary uppercase">Preview_Window</span>
+<span class="size-1.5 bg-green-500 rounded-full animate-pulse"></span>
+</div>
+<div class="h-28 w-full rounded bg-slate-800 mb-2 overflow-hidden border border-surface-border">
+<img alt="Dashboard preview" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv2UCXNE_r5KOIzSlzndknFXVvCCVF7xomBEcClsNKqKe92rLHIdjXs-srWUGSgF8BQHnYBX2lCFbFQKyXyCcjlOsHbDK29EFdD0gk6AeE7RMZMuipAnc8L8KLDaA_xofYClhJdCfwinPVr0iwcrpaxFTUZHLgNRcmiYAgyUxJa2ShQ_MdIX09K-xw1aShToNDdW0HVpkLMTrjyr1BK0obj6rZoubuSxZzaMpo6GI10EKsXZ9MmQk-KVaoDM17c3WbwONlerZT5E_O"/>
+</div>
+<p class="text-[10px] text-slate-400 leading-relaxed font-mono">High-performance analytics platform handling 1M+ data points with real-time WebSocket updates.</p>
+</div>
+</div>
+</div>
+<div class="group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-white/5 transition-colors items-center cursor-pointer relative">
+<div class="col-span-5 md:col-span-4 flex items-center gap-3">
+<div class="p-2 rounded bg-surface-dark border border-surface-border text-purple-400 group-hover:border-purple-400/50 transition-colors">
+<span class="material-symbols-outlined text-lg">science</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">Fluid Sim WebGL</h3>
+<p class="text-[10px] text-slate-500 font-mono hidden sm:block">/labs/shader-physics</p>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center">
+<span class="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[10px] font-mono uppercase">Lab</span>
+</div>
+<div class="col-span-3 md:col-span-2 flex items-center">
+<div class="flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.4)]"></span>
+<span class="text-xs text-slate-300 font-mono">Experimental</span>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+<span>Three.js,</span>
+<span>GLSL</span>
+</div>
+<div class="col-span-4 md:col-span-2 text-right font-mono text-xs text-slate-400">
+                            1 week ago
+                        </div>
+<div class="telemetry-preview hidden absolute left-[60%] top-1/2 -translate-y-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-x-4">
+<div class="w-64 bg-surface-dark/95 backdrop-blur-xl border border-surface-border rounded-lg shadow-2xl p-3">
+<div class="flex items-center justify-between mb-2 border-b border-surface-border/50 pb-2">
+<span class="text-[10px] font-mono text-purple-400 uppercase">Preview_Window</span>
+<span class="size-1.5 bg-yellow-400 rounded-full animate-pulse"></span>
+</div>
+<div class="h-28 w-full rounded bg-slate-800 mb-2 overflow-hidden border border-surface-border">
+<img alt="Fluid Sim preview" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNRk73etuQOnysxk6Nbp8SZztavqGt41ruiLzNI0La_OoFLtyqpV-CYxYvcut3RSYrzdoj3HCSCOtJLdz2Ak5quuJJQNrvpHwqp-ahvBO7yBMscDlj2C4IAJO4m8gr4f_70OTkBSSKmRoTj77sISLcsbvxoV3bxuKVUSbhQoJxrblWfi8ZXg_sWFXHT8Hd-xD9OT-XnqNRLKI-IDINupa_WduDHC47cYLcwm9StK1XlRjGf-WeNr33Mku24B94CAQNAT111k9mgLsE"/>
+</div>
+<p class="text-[10px] text-slate-400 leading-relaxed font-mono">Real-time fluid dynamics simulation running entirely on the GPU via custom shaders.</p>
+</div>
+</div>
+</div>
+<div class="group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-white/5 transition-colors items-center cursor-pointer relative">
+<div class="col-span-5 md:col-span-4 flex items-center gap-3">
+<div class="p-2 rounded bg-surface-dark border border-surface-border text-yellow-400 group-hover:border-yellow-400/50 transition-colors">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white group-hover:text-yellow-300 transition-colors">Future of Interfaces</h3>
+<p class="text-[10px] text-slate-500 font-mono hidden sm:block">/thoughts/ui-ux-trends</p>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center">
+<span class="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-[10px] font-mono uppercase">Thought</span>
+</div>
+<div class="col-span-3 md:col-span-2 flex items-center">
+<div class="flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-slate-500"></span>
+<span class="text-xs text-slate-300 font-mono">Archived</span>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+<span>Markdown</span>
+</div>
+<div class="col-span-4 md:col-span-2 text-right font-mono text-xs text-slate-400">
+                            2 months ago
+                        </div>
+<div class="telemetry-preview hidden absolute left-[60%] top-1/2 -translate-y-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-x-4">
+<div class="w-64 bg-surface-dark/95 backdrop-blur-xl border border-surface-border rounded-lg shadow-2xl p-3">
+<div class="flex items-center justify-between mb-2 border-b border-surface-border/50 pb-2">
+<span class="text-[10px] font-mono text-yellow-400 uppercase">Snippet_View</span>
+<span class="size-1.5 bg-slate-500 rounded-full"></span>
+</div>
+<div class="p-2 bg-black/40 rounded border border-surface-border mb-2">
+<p class="font-mono text-[10px] text-slate-300 italic">"The screen is disappearing. We are moving towards ambient computing where interfaces are..."</p>
+</div>
+<p class="text-[10px] text-slate-400 leading-relaxed font-mono">Essay on the evolution of spatial computing and non-diegetic UI elements.</p>
+</div>
+</div>
+</div>
+<div class="group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-white/5 transition-colors items-center cursor-pointer relative">
+<div class="col-span-5 md:col-span-4 flex items-center gap-3">
+<div class="p-2 rounded bg-surface-dark border border-surface-border text-primary group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white group-hover:text-primary-light transition-colors">E-Commerce API</h3>
+<p class="text-[10px] text-slate-500 font-mono hidden sm:block">/projects/headless-shop</p>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center">
+<span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-mono uppercase">Project</span>
+</div>
+<div class="col-span-3 md:col-span-2 flex items-center">
+<div class="flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
+<span class="text-xs text-slate-300 font-mono">Stable</span>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+<span>Node.js,</span>
+<span>Redis</span>
+</div>
+<div class="col-span-4 md:col-span-2 text-right font-mono text-xs text-slate-400">
+                            3 months ago
+                        </div>
+</div>
+<div class="group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-white/5 transition-colors items-center cursor-pointer relative">
+<div class="col-span-5 md:col-span-4 flex items-center gap-3">
+<div class="p-2 rounded bg-surface-dark border border-surface-border text-purple-400 group-hover:border-purple-400/50 transition-colors">
+<span class="material-symbols-outlined text-lg">science</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">Generative Art Grid</h3>
+<p class="text-[10px] text-slate-500 font-mono hidden sm:block">/labs/canvas-sketch</p>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center">
+<span class="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[10px] font-mono uppercase">Lab</span>
+</div>
+<div class="col-span-3 md:col-span-2 flex items-center">
+<div class="flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.4)]"></span>
+<span class="text-xs text-slate-300 font-mono">Experimental</span>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+<span>Canvas API</span>
+</div>
+<div class="col-span-4 md:col-span-2 text-right font-mono text-xs text-slate-400">
+                            4 months ago
+                        </div>
+</div>
+<div class="group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-white/5 transition-colors items-center cursor-pointer relative">
+<div class="col-span-5 md:col-span-4 flex items-center gap-3">
+<div class="p-2 rounded bg-surface-dark border border-surface-border text-purple-400 group-hover:border-purple-400/50 transition-colors">
+<span class="material-symbols-outlined text-lg">science</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">Audio Visualizer</h3>
+<p class="text-[10px] text-slate-500 font-mono hidden sm:block">/labs/web-audio-api</p>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center">
+<span class="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[10px] font-mono uppercase">Lab</span>
+</div>
+<div class="col-span-3 md:col-span-2 flex items-center">
+<div class="flex items-center gap-2">
+<span class="size-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
+<span class="text-xs text-slate-300 font-mono">Stable</span>
+</div>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+<span>Web Audio</span>
+</div>
+<div class="col-span-4 md:col-span-2 text-right font-mono text-xs text-slate-400">
+                            5 months ago
+                        </div>
+</div>
+</div>
+<div class="px-6 py-3 border-t border-surface-border bg-surface-dark/30 flex items-center justify-between">
+<span class="text-xs text-slate-500 font-mono">Showing 1-6 of 9</span>
+<div class="flex gap-1">
+<button class="size-7 flex items-center justify-center rounded bg-surface-dark border border-surface-border text-slate-400 hover:text-white hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="size-7 flex items-center justify-center rounded bg-primary text-white border border-primary text-xs font-mono">1</button>
+<button class="size-7 flex items-center justify-center rounded bg-surface-dark border border-surface-border text-slate-400 hover:text-white hover:border-primary/50 transition-colors text-xs font-mono">2</button>
+<button class="size-7 flex items-center justify-center rounded bg-surface-dark border border-surface-border text-slate-400 hover:text-white hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="hidden lg:flex w-80 flex-col border-l border-surface-border bg-background-dark/50 backdrop-blur-sm z-20">
+<div class="p-4 border-b border-surface-border">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono">System Status</h3>
+</div>
+<div class="p-6 flex-1 overflow-y-auto custom-scrollbar">
+<div class="mb-8">
+<div class="grid grid-cols-2 gap-3 mb-4">
+<div class="bg-surface-dark p-3 rounded border border-surface-border">
+<span class="block text-2xl font-bold text-white mb-1">12</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-wider font-mono">Active Nodes</span>
+</div>
+<div class="bg-surface-dark p-3 rounded border border-surface-border">
+<span class="block text-2xl font-bold text-primary mb-1">98%</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-wider font-mono">Uptime</span>
+</div>
+</div>
+<div class="w-full bg-surface-dark rounded-full h-1.5 mb-2 overflow-hidden border border-surface-border">
+<div class="bg-gradient-to-r from-primary to-purple-500 h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<div class="flex justify-between text-[10px] font-mono text-slate-500">
+<span>Storage Usage</span>
+<span>750MB / 1GB</span>
+</div>
+</div>
+<div class="mb-8">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono mb-4">Activity Log</h4>
+<div class="space-y-4">
+<div class="relative pl-4 border-l border-surface-border">
+<div class="absolute -left-[3px] top-1.5 size-1.5 bg-primary rounded-full"></div>
+<p class="text-xs text-white mb-0.5">Updated dependencies</p>
+<p class="text-[10px] text-slate-500 font-mono">Today, 09:42 AM</p>
+</div>
+<div class="relative pl-4 border-l border-surface-border">
+<div class="absolute -left-[3px] top-1.5 size-1.5 bg-green-500 rounded-full"></div>
+<p class="text-xs text-white mb-0.5">Deployed 'SaaS Dashboard'</p>
+<p class="text-[10px] text-slate-500 font-mono">Yesterday, 14:20 PM</p>
+</div>
+<div class="relative pl-4 border-l border-surface-border">
+<div class="absolute -left-[3px] top-1.5 size-1.5 bg-slate-600 rounded-full"></div>
+<p class="text-xs text-white mb-0.5">Archived 'Legacy Blog'</p>
+<p class="text-[10px] text-slate-500 font-mono">Oct 24, 2023</p>
+</div>
+</div>
+</div>
+<div class="bg-[#0d0d1a] border border-surface-border rounded p-3 font-mono text-[10px]">
+<div class="flex gap-1.5 mb-2 opacity-50">
+<div class="size-2 rounded-full bg-red-500"></div>
+<div class="size-2 rounded-full bg-yellow-500"></div>
+<div class="size-2 rounded-full bg-green-500"></div>
+</div>
+<div class="text-slate-300">
+<span class="text-primary">user@garden</span>:~$ status<br/>
+<span class="text-green-400">✔ All systems operational</span><br/>
+<span class="text-slate-500">Scanning directories...</span><br/>
+<span class="text-slate-500">9 items found.</span><br/>
+<span class="text-primary">user@garden</span>:~$ <span class="animate-pulse">_</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="flex-none bg-surface-dark/90 border-t border-surface-border px-6 py-2 flex justify-between items-center text-[10px] md:text-xs text-slate-400 font-mono z-20 backdrop-blur-sm">
+<div class="flex gap-4">
+<span class="flex items-center gap-1.5">
+<span class="block size-2 rounded-full bg-green-500 animate-pulse"></span>
+                    API: Connected
+                </span>
+<span class="hidden md:inline">Latency: 12ms</span>
+</div>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">Github</a>
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+</div>
+<div class="hidden md:block">
+                Last commit: <span class="text-slate-300">2 hours ago</span>
+</div>
+</footer>
+</div>
+
+</body></html>
