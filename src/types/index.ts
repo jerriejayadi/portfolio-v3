@@ -29,7 +29,7 @@ export interface PortfolioItem {
     statusColor?: string;
   };
   // UI helpers (mapped from data)
-  iconName?: "Rocket" | "FlaskConical" | "FileText";
+  iconName?: "Briefcase" | "FlaskConical" | "FileText";
   iconColor?: string;
   iconBg?: string;
   hoverColor?: string;

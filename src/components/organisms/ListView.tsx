@@ -11,7 +11,7 @@ import {
   MapPin,
   Terminal,
   Code2,
-  Rocket,
+  Briefcase,
   FlaskConical,
   FileText,
   Eye,
@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 const ICON_MAP = {
-  Rocket: Rocket,
+  Briefcase: Briefcase,
   FlaskConical: FlaskConical,
   FileText: FileText,
   Eye: Eye,
@@ -51,7 +51,7 @@ export function ListView({
   // Filter Categories
   const filters = [
     { label: "ALL", value: "ALL" },
-    { label: "PROJECTS", value: "Project" },
+    { label: "PROJECTS", value: "PROJECTS" },
     { label: "LABS", value: "Lab" },
     { label: "THOUGHTS", value: "Thought" },
   ];
@@ -206,16 +206,26 @@ export function ListView({
     {
       header: "Tech Stack",
       className: "col-span-2 hidden md:flex items-center",
-      cell: (item) => (
-        <div className="flex items-center gap-1 text-[10px] text-text-muted font-mono">
-          {item.techStack?.map((tech, i) => (
-            <span key={tech}>
-              {tech}
-              {i < (item.techStack?.length || 0) - 1 ? "," : ""}
-            </span>
-          ))}
-        </div>
-      ),
+      cell: (item) => {
+        const displayStacks = item.techStack?.slice(0, 3) || [];
+        const hasMore = (item.techStack?.length || 0) > 3;
+
+        return (
+          <div className="flex items-center gap-1 text-[10px] text-text-muted font-mono flex-wrap">
+            {displayStacks.map((tech, i) => (
+              <Badge variant="neutral" key={tech} className="text-nowrap ">
+                {tech}
+                {i < displayStacks.length - 1 || hasMore ? "," : ""}
+              </Badge>
+            ))}
+            {hasMore && (
+              <Badge variant="neutral" className="text-nowrap ">
+                +{item.techStack ? item.techStack.length - 3 : 0}
+              </Badge>
+            )}
+          </div>
+        );
+      },
     },
     {
       header: "Last Commit",

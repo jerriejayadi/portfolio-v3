@@ -27,8 +27,8 @@ export const project = defineType({
       type: "string",
       options: {
         list: [
-          { title: "Project", value: "Project" },
-          { title: "Lab", value: "Lab" },
+          { title: "Projects", value: "PROJECTS" },
+          { title: "Lab", value: "LABS" },
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -39,9 +39,8 @@ export const project = defineType({
       type: "string",
       options: {
         list: [
-          { title: "Stable", value: "Stable" },
-          { title: "Experimental", value: "Experimental" },
-          { title: "Archived", value: "Archived" },
+          { title: "Delivered", value: "FINISHED" },
+          { title: "On Progress", value: "ON_PROGRESS" },
         ],
       },
     }),
@@ -69,7 +68,8 @@ export const project = defineType({
       name: "thumbnail",
       title: "Thumbnail",
       type: "image",
-      description: "Optional thumbnail for list views (overrides Preview Image if set)",
+      description:
+        "Optional thumbnail for list views (overrides Preview Image if set)",
       options: {
         hotspot: true,
       },
