@@ -12,14 +12,23 @@ export function Footer() {
       </div>
 
       <div className="flex gap-4">
-        <a href="#" className="hover:text-primary transition-colors">
+        <a
+          href="https://github.com/jerriejayadi"
+          className="hover:text-primary transition-colors"
+        >
           Github
         </a>
-        <a href="#" className="hover:text-primary transition-colors">
-          Twitter
-        </a>
-        <a href="#" className="hover:text-primary transition-colors">
+        <a
+          href="https://linkedin.com/in/jerriejayadi"
+          className="hover:text-primary transition-colors"
+        >
           LinkedIn
+        </a>{" "}
+        <a
+          href="https://x.com/t_jerriejayadi"
+          className="hover:text-primary transition-colors"
+        >
+          X
         </a>
       </div>
 

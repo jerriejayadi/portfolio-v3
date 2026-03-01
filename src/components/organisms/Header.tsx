@@ -12,6 +12,7 @@ import {
   Moon,
   X,
   LogOut,
+  FileUser,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -82,9 +83,11 @@ export function Header({ view = "map", onViewChange }: HeaderProps) {
             >
               <span className="hidden md:flex">Terminal</span>
             </Button> */}
-            <Button icon={Mail} variant="primary">
-              <span className="hidden md:flex">Contact</span>
-            </Button>
+            <a target="_blank" href="/CV - Tjiauw Jerrie Jayadi.pdf" download>
+              <Button icon={FileUser} variant="primary">
+                <span className="hidden md:flex">Download CV</span>
+              </Button>
+            </a>
           </>
         ) : (
           <Button
@@ -101,3 +104,4 @@ export function Header({ view = "map", onViewChange }: HeaderProps) {
     </header>
   );
 }
+
