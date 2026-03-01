@@ -1,6 +1,14 @@
 "use client";
 
-import { Code, Eye, Rocket, FlaskConical, FileText, ChevronRight } from "lucide-react";
+import {
+  Code,
+  Eye,
+  Rocket,
+  FlaskConical,
+  FileText,
+  ChevronRight,
+  Briefcase,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/atoms/Card";
 import { PortfolioItem } from "@/types";
@@ -8,7 +16,7 @@ import { PortfolioItem } from "@/types";
 type Project = PortfolioItem;
 
 const ICON_MAP = {
-  Rocket: Rocket,
+  Briefcase: Briefcase,
   FlaskConical: FlaskConical,
   FileText: FileText,
 };
@@ -76,7 +84,7 @@ export function ProjectCardContent({ project }: ProjectCardContentProps) {
         </button>
       </div> */}
       <div className="flex text-xs text-white/20">
-        Read More <ChevronRight className="size-4"/>
+        Read More <ChevronRight className="size-4" />
       </div>
     </div>
   );
@@ -87,7 +95,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const iconName = project.iconName || "Rocket"; 
+  const iconName = project.iconName || "Briefcase";
   const Icon = ICON_MAP[iconName] || Code;
   const image = project.preview?.image;
 
