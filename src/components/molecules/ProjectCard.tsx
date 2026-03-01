@@ -57,12 +57,12 @@ export function ProjectCardContent({ project }: ProjectCardContentProps) {
             <span
               className={cn(
                 "text-[10px] font-mono border px-2 py-0.5 rounded",
-                project.status === "Stable"
+                project.status === "FINISHED"
                   ? "border-green-500/30 text-green-400 bg-green-500/10"
                   : "border-yellow-500/30 text-yellow-400 bg-yellow-500/10",
               )}
             >
-              {project.status === "Stable" ? "v2.0.1 PROD" : "BETA"}
+              {project.status === "FINISHED" ? "v2.0.1 PROD" : "BETA"}
             </span>
           )}
         </div>

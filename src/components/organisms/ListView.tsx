@@ -52,8 +52,8 @@ export function ListView({
   const filters = [
     { label: "ALL", value: "ALL" },
     { label: "PROJECTS", value: "PROJECTS" },
-    { label: "LABS", value: "Lab" },
-    { label: "THOUGHTS", value: "Thought" },
+    { label: "LABS", value: "LABS" },
+    { label: "THOUGHTS", value: "THOUGHTS" },
   ];
 
   // Derived State: Filtered & Sorted Items
@@ -286,11 +286,11 @@ export function ListView({
   const router = useRouter();
 
   const handleRowClick = (item: PortfolioItem) => {
-    if (item.type === "Project") {
+    if (item.type === "PROJECTS") {
       router.push(item.path);
-    } else if (item.type === "Thought") {
+    } else if (item.type === "THOUGHTS") {
       router.push(item.path);
-    } else if (item.type === "Lab") {
+    } else if (item.type === "LABS") {
       // Optional: Handle Lab items or default navigation
       router.push(item.path);
     }

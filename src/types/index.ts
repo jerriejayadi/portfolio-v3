@@ -14,8 +14,8 @@ export interface PortfolioItem {
   title: string;
   slug?: string;
   path: string;
-  type: "Project" | "Lab" | "Thought";
-  status?: "Stable" | "Experimental" | "Archived" | "Published";
+  type: "PROJECTS" | "LABS" | "THOUGHTS";
+  status?: "FINISHED" | "ON_PROGRESS";
   techStack?: string[];
   lastCommit?: string;
   description?: string;
@@ -37,3 +37,4 @@ export interface PortfolioItem {
   badgeColor?: string;
   statusColor?: string;
 }
+
