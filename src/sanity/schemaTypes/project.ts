@@ -57,6 +57,12 @@ export const project = defineType({
       description: 'e.g., "2 days ago"',
     }),
     defineField({
+      name: "startedAt",
+      title: "Started At",
+      type: "datetime",
+      description: "When the project started",
+    }),
+    defineField({
       name: "previewImage",
       title: "Preview Image",
       type: "image",

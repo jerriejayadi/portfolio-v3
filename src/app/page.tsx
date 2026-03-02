@@ -2,6 +2,7 @@ import React from "react";
 import { client } from "@/sanity/client";
 import { EXPERIENCES_QUERY } from "@/sanity/lib/queries";
 import { HomeContent } from "@/components/templates/HomeContent";
+import { sortPortfolioItems } from "@/lib/utils";
 
 import { PROJECTS_QUERY, THOUGHTS_QUERY } from "@/sanity/lib/queries";
 import { PortfolioItem } from "@/types";
@@ -38,6 +39,7 @@ export default async function Home() {
         status: p.status,
         techStack: p.techStack,
         lastCommit: p.lastCommit,
+        startedAt: p.startedAt,
         description: p.description,
         preview: p.preview,
         iconName: p.type === "PROJECTS" ? "Briefcase" : "FlaskConical",
@@ -72,6 +74,8 @@ export default async function Home() {
         status: "FINISHED",
         techStack: ["Markdown"],
         lastCommit: new Date(t.publishedAt).toLocaleDateString(),
+        startedAt: t.publishedAt,
+        publishedAt: t.publishedAt,
         snippet: t.snippet,
         iconName: "FileText",
         iconColor: "text-yellow-400",
@@ -90,7 +94,10 @@ export default async function Home() {
 
   return (
     <React.Suspense fallback={null}>
-      <HomeContent experiences={experiences} portfolioItems={portfolioItems} />
+      <HomeContent
+        experiences={experiences}
+        portfolioItems={sortPortfolioItems(portfolioItems)}
+      />
     </React.Suspense>
   );
 }

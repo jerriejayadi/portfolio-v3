@@ -115,7 +115,7 @@ export function ProfileView({ content }: ProfileViewProps) {
         >
           <div className="w-full mx-auto p-6 md:p-10 overflow-y-auto custom-scrollbar">
             {content ? (
-              <article className="prose prose-invert prose-headings:font-mono prose-p:font-sans prose-a:text-primary max-w-none">
+              <article className="prose dark:prose-invert prose-headings:font-mono prose-p:font-sans prose-a:text-primary max-w-none">
                 <Markdown>{content}</Markdown>
               </article>
             ) : (

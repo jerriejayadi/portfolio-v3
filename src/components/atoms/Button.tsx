@@ -24,13 +24,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const variants = {
       ghost:
-        "text-text-muted hover:text-text-primary hover:bg-surface-hover/20",
+        "text-text-muted hover:text-text-primary hover:bg-surface-hover/50",
       outline:
-        "bg-surface border border-surface-border hover:bg-white/20 hover:border-primary/50 text-text-primary",
+        "bg-surface border border-surface-border hover:bg-surface-hover hover:border-primary/50 text-text-primary",
       primary:
         "bg-primary hover:bg-primary-light text-white shadow-lg shadow-primary/25",
       danger:
-        "bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/20 hover:border-red-500/50",
+        "bg-red-500/10 text-red-500 border border-red-500/30 hover:bg-red-500/20 hover:border-red-500/50",
     };
 
     const sizes = {
@@ -67,3 +67,4 @@ Button.displayName = "Button";
 
 export { Button };
 export type { ButtonProps };
+

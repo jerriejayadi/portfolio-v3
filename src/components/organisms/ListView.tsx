@@ -198,7 +198,7 @@ export function ListView({
             className={cn("size-1.5 rounded-full", item.statusColor)}
           ></span>
           <span className="text-xs text-text-secondary font-mono">
-            {item.status}
+            {item.status === "FINISHED" ? "Delivered" : "On Progress"}
           </span>
         </div>
       ),
@@ -228,13 +228,22 @@ export function ListView({
       },
     },
     {
-      header: "Last Commit",
-      accessorKey: "lastCommit",
-      sortKey: "lastCommit",
+      header: "Year",
+      accessorKey: "startedAt",
+      sortKey: "startedAt",
       align: "right",
       className:
         "col-span-4 md:col-span-2 hidden sm:flex items-center justify-end",
       cellClassName: "text-right font-mono text-xs text-text-muted",
+      cell: (item) => (
+        <span className="text-right font-mono text-xs text-text-muted">
+          {item.startedAt
+            ? new Date(item.startedAt).getFullYear()
+            : item.publishedAt
+              ? new Date(item.publishedAt).getFullYear()
+              : "-"}
+        </span>
+      ),
     },
   ];
 

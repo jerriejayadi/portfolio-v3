@@ -16,7 +16,7 @@ export const EXPERIENCES_QUERY =
 }`);
 
 export const PROJECTS_QUERY =
-  defineQuery(`*[_type == "project"] | order(lastCommit desc) {
+  defineQuery(`*[_type == "project"] | order(startedAt desc) {
   "id": _id,
   title,
   "slug": slug.current,
@@ -24,6 +24,7 @@ export const PROJECTS_QUERY =
   status,
   techStack,
   lastCommit,
+  startedAt,
   description,
   "preview": {
     "title": title,
@@ -55,8 +56,12 @@ export const PROJECT_BY_SLUG_QUERY =
   status,
   techStack,
   lastCommit,
+  startedAt,
   description,
-  content
+  content,
+  "preview": {
+    "image": coalesce(thumbnail.asset->url, previewImage.asset->url)
+  }
 }`);
 
 export const THOUGHT_BY_SLUG_QUERY =
@@ -75,7 +80,7 @@ export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0] {
 }`);
 
 export const LABS_QUERY =
-  defineQuery(`*[_type == "project" && type == "LABS"] | order(lastCommit desc) {
+  defineQuery(`*[_type == "project" && type == "LABS"] | order(startedAt desc) {
   "id": _id,
   title,
   "slug": slug.current,
@@ -83,6 +88,7 @@ export const LABS_QUERY =
   status,
   techStack,
   lastCommit,
+  startedAt,
   description,
   "preview": {
     "title": title,
@@ -101,6 +107,9 @@ export const LAB_BY_SLUG_QUERY =
   techStack,
   lastCommit,
   description,
-  content
+  content,
+  "preview": {
+    "image": coalesce(thumbnail.asset->url, previewImage.asset->url)
+  }
 }`);
 

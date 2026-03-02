@@ -6,16 +6,11 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "hover";
 }
 
-export function Card({
-  children,
-  className,
-  variant = "default",
-  ...props
-}: CardProps) {
+export function Card({ children, className, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "group relative bg-[#131326]/60 border border-primary/30 rounded-xl overflow-hidden hover:border-primary/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(17,17,212,0.15)] flex flex-col md:flex-row",
+        "group relative bg-surface/80 border border-primary/30 rounded-xl overflow-hidden hover:border-primary/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(17,17,212,0.15)] flex flex-col md:flex-row",
         className,
       )}
       {...props}

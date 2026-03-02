@@ -234,7 +234,7 @@ function DataTableRow({ className, children, ...props }: DataTableRowProps) {
   return (
     <div
       className={cn(
-        "group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-white/5 dark:hover:bg-white/5 transition-colors items-center cursor-pointer relative",
+        "group row-hover-effect grid grid-cols-12 px-6 py-4 border-b border-surface-border hover:bg-surface-hover transition-colors items-center cursor-pointer relative",
         className,
       )}
       {...props}

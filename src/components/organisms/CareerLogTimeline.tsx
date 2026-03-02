@@ -14,6 +14,7 @@ import {
   Briefcase,
   ChevronDown,
   ChevronUp,
+  Download,
 } from "lucide-react";
 import { Markdown } from "@/components/atoms/Markdown";
 
@@ -40,6 +41,8 @@ function formatPeriod(period: Experience["period"]) {
 }
 
 import { useState, useRef, useEffect } from "react";
+import { Button } from "../atoms/Button";
+import Link from "next/link";
 
 function ExpandableDescription({ content }: { content: string }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -87,7 +90,7 @@ function ExpandableDescription({ content }: { content: string }) {
 
 export function CareerLogTimeline({ data = [] }: { data?: Experience[] }) {
   return (
-    <Timeline>
+    <Timeline className="relative">
       {data.map((exp) => (
         <TimelineItem key={exp.id}>
           <div className="flex gap-4 w-full">
@@ -109,7 +112,7 @@ export function CareerLogTimeline({ data = [] }: { data?: Experience[] }) {
                   <h3
                     className={cn(
                       "text-lg font-bold flex items-center gap-2 shrink-0 ",
-                      exp.current ? "text-primary" : "text-foreground",
+                      exp.current ? "text-primary" : "text-text-primary",
                     )}
                   >
                     {exp.role}
@@ -154,6 +157,15 @@ export function CareerLogTimeline({ data = [] }: { data?: Experience[] }) {
           </div>
         </div>
       </TimelineItem>
+      <div className="sticky bottom-4 right-4  flex justify-end">
+        <Link href="/CV - Tjiauw Jerrie Jayadi.pdf" download>
+          <Button
+            icon={Download}
+            variant="primary"
+            className="w-fit  h-auto aspect-square rounded-[100%]!"
+          />
+        </Link>
+      </div>
     </Timeline>
   );
 }

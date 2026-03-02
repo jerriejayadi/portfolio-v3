@@ -2,6 +2,7 @@ import { LabsList } from "@/components/templates/LabsList";
 import { client } from "@/sanity/client";
 import { LABS_QUERY } from "@/sanity/lib/queries";
 import { PortfolioItem } from "@/types";
+import { sortPortfolioItems } from "@/lib/utils";
 
 export default async function LabsPage() {
   const labs = await client.fetch(LABS_QUERY);
@@ -16,6 +17,7 @@ export default async function LabsPage() {
     status: p.status,
     techStack: p.techStack,
     lastCommit: p.lastCommit,
+    startedAt: p.startedAt,
     description: p.description,
     preview: p.preview,
     iconName: "FlaskConical" as const,
@@ -30,6 +32,6 @@ export default async function LabsPage() {
         : "bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.4)]",
   }));
 
-  return <LabsList items={items} />;
+  return <LabsList items={sortPortfolioItems(items)} />;
 }
 

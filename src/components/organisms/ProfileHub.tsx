@@ -7,7 +7,7 @@ export function ProfileHub() {
       {/* Avatar with orbiting rings */}
       <div className="relative group cursor-pointer">
         {/* Glow backdrop */}
-        <div className="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse-slow" />
+        <div className="absolute -inset-4 bg-primary rounded-full blur-xl animate-pulse" />
 
         {/* Avatar circle */}
         <div className="relative size-32 md:size-40 rounded-full bg-surface border-2 border-primary shadow-[0_0_30px_rgba(59,130,246,0.4)] flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105">

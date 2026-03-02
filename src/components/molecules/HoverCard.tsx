@@ -57,7 +57,7 @@ export function HoverCard({
         "absolute w-64 z-30 transition-all duration-300",
         positionClasses[position],
         isHover
-          ? "opacity-0 scale-90 pointer-events-none peer-hover:opacity-100 peer-hover:scale-100 peer-hover:pointer-events-auto"
+          ? "opacity-0 scale-90 pointer-events-none peer-hover:opacity-100 peer-hover:scale-100 peer-hover:pointer-events-auto hover:opacity-100 hover:scale-100 hover:pointer-events-auto group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto"
           : visible
             ? "opacity-100 scale-100 pointer-events-auto"
             : "opacity-0 scale-90 pointer-events-none",

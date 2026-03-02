@@ -18,6 +18,7 @@ export interface PortfolioItem {
   status?: "FINISHED" | "ON_PROGRESS";
   techStack?: string[];
   lastCommit?: string;
+  startedAt?: string;
   description?: string;
   publishedAt?: string;
   snippet?: string;

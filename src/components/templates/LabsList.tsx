@@ -26,7 +26,7 @@ export function LabsList({ items = [], selectedId }: LabsListProps) {
     >
       {/* Left: Lab List */}
       <div className="w-full md:w-2/3 lg:w-3/4 p-6 md:p-10 overflow-y-auto custom-scrollbar flex flex-col relative">
-        <div className="font-mono text-xs text-slate-500 mb-6">
+        <div className="font-mono text-xs text-text-muted mb-6">
           Displaying {items.length} experiments...
         </div>
         <div className="space-y-8 pb-10">

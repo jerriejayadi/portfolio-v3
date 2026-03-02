@@ -8,7 +8,7 @@ interface BlogListProps {
 
 export function BlogList({ onBack }: BlogListProps) {
   return (
-    <div className="min-h-screen w-full bg-background font-mono text-text-primary p-4 md:p-12 overflow-y-auto">
+    <div className="min-h-screen w-full bg-background-main font-mono text-text-primary p-4 md:p-12 overflow-y-auto">
       <div className="max-w-4xl mx-auto space-y-12 pb-24">
         {/* Header */}
         <header className="border-b border-surface-border pb-8">

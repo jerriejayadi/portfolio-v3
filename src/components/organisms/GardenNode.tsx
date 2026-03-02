@@ -120,7 +120,12 @@ export function GardenNode({
         className,
       )}
     >
-      <div className="relative flex flex-col items-center">
+      <div
+        className={cn(
+          "relative flex flex-col items-center",
+          interactionMode === "hover" && "group",
+        )}
+      >
         {/* Main node circle */}
         <div
           className={cn(
@@ -158,7 +163,7 @@ export function GardenNode({
                 "absolute transition-all duration-300",
                 sat.className,
                 isHover
-                  ? "opacity-0 scale-0 peer-hover:opacity-100 peer-hover:scale-100"
+                  ? "opacity-0 scale-0 peer-hover:opacity-100 peer-hover:scale-100 group-hover:opacity-100 group-hover:scale-100"
                   : open
                     ? "opacity-100 scale-100"
                     : "opacity-0 scale-0",

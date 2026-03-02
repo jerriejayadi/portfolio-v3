@@ -18,6 +18,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Button } from "../atoms/Button";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface HeaderProps {
   view?: "map" | "list" | "detail" | string;
@@ -83,18 +84,18 @@ export function Header({ view = "map", onViewChange }: HeaderProps) {
             >
               <span className="hidden md:flex">Terminal</span>
             </Button> */}
-            <a target="_blank" href="/CV - Tjiauw Jerrie Jayadi.pdf" download>
-              <Button icon={FileUser} variant="primary">
-                <span className="hidden md:flex">Download CV</span>
+            <Link href="https://linkedin.com/in/jerriejayadi" target="_blank">
+              <Button variant="primary">
+                <span className="hidden md:flex">Contact</span>
               </Button>
-            </a>
+            </Link>
           </>
         ) : (
           <Button
             onClick={() => {
               router.back();
             }}
-            className="hover:bg-white/20"
+            className="hover:bg-surface-hover"
             variant="outline"
           >
             Exit

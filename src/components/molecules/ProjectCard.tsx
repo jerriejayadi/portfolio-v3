@@ -30,13 +30,13 @@ interface ProjectCardImageProps {
 
 export function ProjectCardImage({ src, alt }: ProjectCardImageProps) {
   return (
-    <div className="w-full md:w-2/5 h-48 md:h-auto relative overflow-hidden bg-black/40">
+    <div className="w-full md:w-2/5 h-48 md:h-auto relative overflow-hidden bg-surface-hover">
       <img
         alt={alt}
         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
         src={src}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#131326] to-transparent md:bg-gradient-to-r"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent md:bg-gradient-to-r"></div>
     </div>
   );
 }
@@ -50,7 +50,7 @@ export function ProjectCardContent({ project }: ProjectCardContentProps) {
     <div className="flex-1 p-6 flex flex-col justify-between">
       <div>
         <div className="flex justify-between items-start mb-2">
-          <h3 className="text-xl font-bold text-white group-hover:text-primary-light transition-colors">
+          <h3 className="text-xl font-bold text-text-primary group-hover:text-primary transition-colors">
             {project.title}
           </h3>
           {project.status && (
@@ -62,11 +62,16 @@ export function ProjectCardContent({ project }: ProjectCardContentProps) {
                   : "border-yellow-500/30 text-yellow-400 bg-yellow-500/10",
               )}
             >
-              {project.status === "FINISHED" ? "v2.0.1 PROD" : "BETA"}
+              {project.status === "FINISHED" ? "FINISHED" : "BETA"}
+            </span>
+          )}
+          {project.startedAt && (
+            <span className="text-[10px] font-mono border px-2 py-0.5 rounded border-surface-border text-text-muted bg-surface/50 ml-2">
+              {new Date(project.startedAt).getFullYear()}
             </span>
           )}
         </div>
-        <p className="text-slate-400 text-sm leading-relaxed mb-4">
+        <p className="text-text-secondary text-sm leading-relaxed mb-4">
           {project.preview?.description ||
             "A high-fidelity project leveraging modern web technologies."}
         </p>
@@ -83,7 +88,7 @@ export function ProjectCardContent({ project }: ProjectCardContentProps) {
           LIVE_FEED
         </button>
       </div> */}
-      <div className="flex text-xs text-white/20">
+      <div className="flex text-xs text-text-muted group-hover:text-primary transition-colors">
         Read More <ChevronRight className="size-4" />
       </div>
     </div>

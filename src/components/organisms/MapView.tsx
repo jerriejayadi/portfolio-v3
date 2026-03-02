@@ -6,7 +6,6 @@ import { TerminalModal } from "@/components/molecules/TerminalModal";
 import { CareerLogTimeline } from "@/components/organisms/CareerLogTimeline";
 import { ProfileHub } from "@/components/organisms/ProfileHub";
 import { GardenNode } from "@/components/organisms/GardenNode";
-import { MiniMap } from "@/components/organisms/MiniMap";
 import { ConnectorLines } from "@/components/organisms/ConnectorLines";
 import { DataPoint } from "@/components/atoms/DataPoint";
 import {
@@ -110,7 +109,7 @@ export function MapView({ experiences = [] }: { experiences?: Experience[] }) {
           size="md"
           hoverColor="hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] "
           animation="float"
-          interactionMode={isMobile ? "toggle" : "toggle"}
+          interactionMode={isMobile ? "toggle" : "hover"}
           onClick={isMobile ? () => setShowAboutModal(true) : undefined}
           {...(!isMobile && {
             hoverCard: { position: "bottom-right" as const },
@@ -155,7 +154,7 @@ export function MapView({ experiences = [] }: { experiences?: Experience[] }) {
           animation="float-delayed"
           onClick={() => router.push("/projects")}
           hoverCard={{
-            image: "/images/project-dashboard.jpg",
+            image: "/images/project-preview.png",
             imageAlt: "Dashboard interface screenshot",
             title: "Projects",
             description:
@@ -172,7 +171,7 @@ export function MapView({ experiences = [] }: { experiences?: Experience[] }) {
           animation="float-delayed"
           onClick={() => router.push("/labs")}
           hoverCard={{
-            image: "/images/project-dashboard.jpg",
+            image: "/images/labs-preview.png",
             imageAlt: "Dashboard interface screenshot",
             title: "Labs",
             description:

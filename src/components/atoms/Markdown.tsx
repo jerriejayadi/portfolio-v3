@@ -24,7 +24,7 @@ export function Markdown({ children, className }: MarkdownProps) {
           ),
           h2: ({ ...props }) => (
             <h2
-              className="text-2xl font-bold text-text-primary mt-6 mb-3 max-w-full wrap-break-word border-b border-white/10 pb-2"
+              className="text-2xl font-bold text-text-primary mt-6 mb-3 max-w-full wrap-break-word border-b border-surface-border pb-2"
               {...props}
             />
           ),
@@ -69,7 +69,7 @@ export function Markdown({ children, className }: MarkdownProps) {
           ),
           blockquote: ({ ...props }) => (
             <blockquote
-              className="border-l-4 border-primary/50 pl-4 py-1 my-4 italic text-text-muted bg-white/5 rounded-r"
+              className="border-l-4 border-primary/50 pl-4 py-1 my-4 italic text-text-muted bg-surface rounded-r"
               {...props}
             />
           ),
@@ -95,7 +95,7 @@ export function Markdown({ children, className }: MarkdownProps) {
             const isInline = !className;
             return isInline ? (
               <code
-                className="bg-white/10 text-primary-light px-1.5 py-0.5 rounded text-sm font-mono"
+                className="bg-surface-hover text-primary-light px-1.5 py-0.5 rounded text-sm font-mono"
                 {...props}
               />
             ) : (
@@ -104,7 +104,7 @@ export function Markdown({ children, className }: MarkdownProps) {
           },
           pre: ({ ...props }) => (
             <pre
-              className="bg-[#0d1117] text-slate-300 p-4 rounded-lg overflow-x-auto my-4 border border-white/10 custom-scrollbar"
+              className="bg-surface text-text-secondary p-4 rounded-lg overflow-x-auto my-4 border border-surface-border custom-scrollbar"
               {...props}
             />
           ),
@@ -121,7 +121,7 @@ export function Markdown({ children, className }: MarkdownProps) {
           img: ({ ...props }) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              className="rounded-lg border border-white/10 my-6 max-w-full h-auto mx-auto shadow-lg"
+              className="rounded-lg border border-surface-border my-6 max-w-full h-auto mx-auto shadow-lg"
               alt={props.alt || "Markdown image"}
               {...props}
             />
@@ -129,21 +129,24 @@ export function Markdown({ children, className }: MarkdownProps) {
 
           // --- Tables (GFM) ---
           table: ({ ...props }) => (
-            <div className="overflow-x-auto my-6 rounded-lg border border-white/10">
+            <div className="overflow-x-auto my-6 rounded-lg border border-surface-border">
               <table className="w-full text-left text-sm" {...props} />
             </div>
           ),
           thead: ({ ...props }) => (
             <thead
-              className="bg-white/5 text-text-primary border-b border-white/10"
+              className="bg-surface-hover text-text-primary border-b border-surface-border"
               {...props}
             />
           ),
           tbody: ({ ...props }) => (
-            <tbody className="divide-y divide-white/5" {...props} />
+            <tbody className="divide-y divide-surface-border" {...props} />
           ),
           tr: ({ ...props }) => (
-            <tr className="hover:bg-white/5 transition-colors" {...props} />
+            <tr
+              className="hover:bg-surface-hover/50 transition-colors"
+              {...props}
+            />
           ),
           th: ({ ...props }) => (
             <th
@@ -157,7 +160,7 @@ export function Markdown({ children, className }: MarkdownProps) {
 
           // --- Misc ---
           hr: ({ ...props }) => (
-            <hr className="my-8 border-white/10" {...props} />
+            <hr className="my-8 border-surface-border" {...props} />
           ),
           br: ({ ...props }) => <br className="my-2" {...props} />,
         }}

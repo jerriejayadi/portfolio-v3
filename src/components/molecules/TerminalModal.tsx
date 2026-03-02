@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { TerminalHeader } from "@/components/molecules/TerminalHeader";
+import { Button } from "../atoms/Button";
 
 interface TerminalModalProps {
   open: boolean;
@@ -50,3 +51,4 @@ export function TerminalModal({
     </div>
   );
 }
+
