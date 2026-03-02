@@ -22,7 +22,7 @@ export function LabsList({ items = [], selectedId }: LabsListProps) {
       onClose={() => {
         router.push(`/?view=map`);
       }}
-      className="p-1! md:p-8"
+      className="p-1! md:p-12!"
     >
       {/* Left: Lab List */}
       <div className="w-full md:w-2/3 lg:w-3/4 p-6 md:p-10 overflow-y-auto custom-scrollbar flex flex-col relative">

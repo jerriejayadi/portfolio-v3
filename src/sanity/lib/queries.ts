@@ -75,7 +75,7 @@ export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0] {
 }`);
 
 export const LABS_QUERY =
-  defineQuery(`*[_type == "project" && type == "Lab"] | order(lastCommit desc) {
+  defineQuery(`*[_type == "project" && type == "LABS"] | order(lastCommit desc) {
   "id": _id,
   title,
   "slug": slug.current,
@@ -92,7 +92,7 @@ export const LABS_QUERY =
 }`);
 
 export const LAB_BY_SLUG_QUERY =
-  defineQuery(`*[_type == "project" && type == "Lab" && slug.current == $slug][0] {
+  defineQuery(`*[_type == "project" && type == "LABS" && slug.current == $slug][0] {
   "id": _id,
   title,
   "slug": slug.current,

@@ -1,0 +1,47 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="currentFill"/>
+
+  <!-- Left J -->
+  <path 
+    d="M230 90 
+       C230 90, 230 280, 230 330
+       C230 400, 170 420, 140 380" 
+    fill="none" 
+    stroke="white" 
+    stroke-width="22" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"/>
+
+  <!-- Inner thin accent (left) -->
+  <path 
+    d="M250 90 
+       C250 90, 250 280, 250 330
+       C250 380, 190 400, 160 365" 
+    fill="none" 
+    stroke="white" 
+    stroke-width="6" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"/>
+
+  <!-- Right J -->
+  <path 
+    d="M300 90 
+       C300 90, 300 300, 300 350
+       C300 420, 240 440, 210 400" 
+    fill="none" 
+    stroke="white" 
+    stroke-width="22" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"/>
+
+  <!-- Inner thin accent (right) -->
+  <path 
+    d="M320 120 
+       C320 120, 320 300, 320 350
+       C320 400, 260 420, 230 385" 
+    fill="none" 
+    stroke="white" 
+    stroke-width="6" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"/>
+</svg>
