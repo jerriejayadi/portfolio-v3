@@ -13,6 +13,8 @@ import {
   X,
   LogOut,
   FileUser,
+  Contact,
+  Phone,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -88,7 +90,9 @@ export function Header({ view = "map", onViewChange }: HeaderProps) {
             <Button
               variant="primary"
               onClick={() => setIsContactModalOpen(true)}
+              icon={Phone}
             >
+
               <span className="hidden md:flex">Contact</span>
             </Button>
           </>
