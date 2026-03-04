@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { TerminalHeader } from "@/components/molecules/TerminalHeader";
 import { Button } from "../atoms/Button";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 interface TerminalModalProps {
   open: boolean;
@@ -19,9 +21,16 @@ export function TerminalModal({
   children,
   className,
 }: TerminalModalProps) {
-  if (!open) return null;
+  const [mounted, setMounted] = useState(false);
 
-  return (
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  if (!open || !mounted) return null;
+
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
       onClick={onClose}
@@ -48,7 +57,8 @@ export function TerminalModal({
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

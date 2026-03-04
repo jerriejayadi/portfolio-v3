@@ -33,7 +33,7 @@ export default async function ProjectPage({ params }: PageProps) {
               src={project.preview.image}
               alt={project.title}
               fill
-              className="object-cover"
+              className=""
               priority
             />
           </div>

@@ -296,8 +296,9 @@ function DataTablePagination({
   ...props
 }: DataTablePaginationProps) {
   // Calculate displayed range
-  const startItem = (currentPage - 1) * itemsPerPage + 1;
+  const startItem = totalItems === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
   const endItem = Math.min(currentPage * itemsPerPage, totalItems || 0);
+  const effectiveTotalPages = Math.max(1, totalPages);
 
   const renderPaginationButtons = () => {
     if (!onPageChange) return null;
@@ -305,7 +306,10 @@ function DataTablePagination({
     const buttons = [];
     const maxVisiblePages = 5;
     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    const endPage = Math.min(
+      effectiveTotalPages,
+      startPage + maxVisiblePages - 1,
+    );
 
     if (endPage - startPage + 1 < maxVisiblePages) {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);
@@ -316,8 +320,9 @@ function DataTablePagination({
         <button
           key={i}
           onClick={() => onPageChange(i)}
+          disabled={totalItems === 0}
           className={cn(
-            "size-7 flex items-center justify-center rounded border text-xs font-mono transition-colors",
+            "size-7 flex items-center justify-center rounded border text-xs font-mono transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
             currentPage === i
               ? "bg-primary text-white border-primary"
               : "bg-surface border-surface-border text-text-muted hover:text-text-primary hover:border-primary/50",
@@ -341,14 +346,14 @@ function DataTablePagination({
       {children || (
         <>
           <span className="text-xs text-text-secondary font-mono">
-            {totalItems
+            {totalItems !== undefined
               ? `Showing ${startItem}-${endItem} of ${totalItems}`
-              : `Page ${currentPage} of ${totalPages}`}
+              : `Page ${currentPage} of ${effectiveTotalPages}`}
           </span>
           <div className="flex gap-1">
             <button
               onClick={() => onPageChange?.(Math.max(1, currentPage - 1))}
-              disabled={currentPage === 1}
+              disabled={currentPage === 1 || totalItems === 0}
               className="size-7 flex items-center justify-center rounded bg-surface border border-surface-border text-text-muted hover:text-text-primary hover:border-primary/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronLeft className="size-[14px]!" />
@@ -356,9 +361,9 @@ function DataTablePagination({
             {renderPaginationButtons()}
             <button
               onClick={() =>
-                onPageChange?.(Math.min(totalPages, currentPage + 1))
+                onPageChange?.(Math.min(effectiveTotalPages, currentPage + 1))
               }
-              disabled={currentPage === totalPages}
+              disabled={currentPage === effectiveTotalPages || totalItems === 0}
               className="size-7 flex items-center justify-center rounded bg-surface border border-surface-border text-text-muted hover:text-text-primary hover:border-primary/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronRight className="size-[14px]!" />
@@ -390,6 +395,7 @@ interface DataTableContentProps<T> {
   onSort?: (key: string) => void;
   renderRowExtra?: (item: T) => React.ReactNode;
   onRowClick?: (item: T) => void;
+  emptyState?: React.ReactNode;
 }
 
 function DataTableContent<T extends { id: string | number }>({
@@ -399,6 +405,7 @@ function DataTableContent<T extends { id: string | number }>({
   onSort,
   renderRowExtra,
   onRowClick,
+  emptyState,
 }: DataTableContentProps<T>) {
   return (
     <>
@@ -417,24 +424,30 @@ function DataTableContent<T extends { id: string | number }>({
         ))}
       </DataTableHeader>
       <DataTableBody>
-        {data.map((item) => (
-          <DataTableRow key={item.id} onClick={() => onRowClick?.(item)}>
-            {columns.map((col, index) => (
-              <DataTableCell
-                key={index}
-                align={col.align}
-                className={cn(col.className, col.cellClassName)}
-              >
-                {col.cell
-                  ? col.cell(item)
-                  : col.accessorKey
-                    ? (item[col.accessorKey] as React.ReactNode)
-                    : null}
-              </DataTableCell>
+        {data.length === 0
+          ? emptyState || (
+              <div className="flex flex-col items-center justify-center py-20 text-center text-text-muted font-mono text-sm">
+                No data available
+              </div>
+            )
+          : data.map((item) => (
+              <DataTableRow key={item.id} onClick={() => onRowClick?.(item)}>
+                {columns.map((col, index) => (
+                  <DataTableCell
+                    key={index}
+                    align={col.align}
+                    className={cn(col.className, col.cellClassName)}
+                  >
+                    {col.cell
+                      ? col.cell(item)
+                      : col.accessorKey
+                        ? (item[col.accessorKey] as React.ReactNode)
+                        : null}
+                  </DataTableCell>
+                ))}
+                {renderRowExtra?.(item)}
+              </DataTableRow>
             ))}
-            {renderRowExtra?.(item)}
-          </DataTableRow>
-        ))}
       </DataTableBody>
     </>
   );

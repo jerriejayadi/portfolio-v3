@@ -18,7 +18,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Button } from "../atoms/Button";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { ContactModal } from "@/components/molecules/ContactModal";
 
 interface HeaderProps {
   view?: "map" | "list" | "detail" | string;
@@ -29,6 +29,7 @@ export function Header({ view = "map", onViewChange }: HeaderProps) {
   const router = useRouter();
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -84,11 +85,12 @@ export function Header({ view = "map", onViewChange }: HeaderProps) {
             >
               <span className="hidden md:flex">Terminal</span>
             </Button> */}
-            <Link href="https://linkedin.com/in/jerriejayadi" target="_blank">
-              <Button variant="primary">
-                <span className="hidden md:flex">Contact</span>
-              </Button>
-            </Link>
+            <Button
+              variant="primary"
+              onClick={() => setIsContactModalOpen(true)}
+            >
+              <span className="hidden md:flex">Contact</span>
+            </Button>
           </>
         ) : (
           <Button
@@ -102,6 +104,10 @@ export function Header({ view = "map", onViewChange }: HeaderProps) {
           </Button>
         )}
       </div>
+      <ContactModal
+        open={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </header>
   );
 }

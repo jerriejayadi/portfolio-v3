@@ -33,7 +33,7 @@ export default async function LabPage({ params }: PageProps) {
               src={lab.preview.image}
               alt={lab.title}
               fill
-              className="object-cover"
+              className=""
               priority
             />
           </div>

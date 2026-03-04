@@ -15,8 +15,10 @@ import {
   User,
   Briefcase,
   FlaskConical,
+  ArrowRight,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useViewport } from "@/hooks/useViewport";
 
 import { Experience } from "@/components/organisms/CareerLogTimeline";
@@ -48,7 +50,7 @@ function AboutContent() {
           ,
           <br />
           {"  "}status:{" "}
-          <span className="text-green-600 dark:text-green-400">{`'Delivering complex apps'`}</span>
+          <span className="text-green-600 dark:text-green-400">{`'Giving my best'`}</span>
           <br />
         </div>
         {"}"};
@@ -75,6 +77,17 @@ function AboutContent() {
         <span className="text-amber-600 dark:text-yellow-300">init</span>(
         <span className="text-green-600 dark:text-green-400">{`'exploration_mode'`}</span>
         );<span className="animate-pulse">_</span>
+      </div>
+
+      {/* Redirection to Profile */}
+      <div className="mt-8 pt-4 border-t border-surface-border/50 flex justify-end">
+        <Link
+          href="/profile"
+          className="group flex items-center gap-2 px-4 py-2 bg-surface hover:bg-surface-hover border border-surface-border hover:border-primary/50 text-text-primary text-xs font-mono rounded transition-all duration-300"
+        >
+          View Full Profile
+          <ArrowRight className="size-3.5 group-hover:translate-x-1 transition-transform" />
+        </Link>
       </div>
     </>
   );

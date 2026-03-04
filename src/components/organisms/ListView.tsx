@@ -16,6 +16,7 @@ import {
   FileText,
   Eye,
   Code,
+  SearchX,
 } from "lucide-react";
 
 const ICON_MAP = {
@@ -351,7 +352,7 @@ export function ListView({
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span>Delivering complex apps</span>
+                <span>Giving my best</span>
               </div>
             </div>
 
@@ -404,7 +405,7 @@ export function ListView({
 
           {/* Timeline Scroll Area */}
         </div>
-        <div className="flex-1 flex flex-col h-full overflow-auto border- md:border-x border-surface-border order-3 md:order-2">
+        <div className="flex-1 flex flex-col h-full overflow-auto md:border-l border-surface-border order-3 md:order-2">
           <DataTable>
             {/* Toolbar */}
             <DataTable.Toolbar
@@ -416,7 +417,6 @@ export function ListView({
               searchPlaceholder="Search directory..."
             ></DataTable.Toolbar>
 
-            {/* Data-Driven Content */}
             <DataTable.Content
               data={paginatedItems}
               columns={columns}
@@ -424,6 +424,21 @@ export function ListView({
               onSort={handleSort}
               renderRowExtra={renderRowExtra}
               onRowClick={handleRowClick}
+              emptyState={
+                <div className="flex flex-col items-center justify-center py-20 text-center">
+                  <div className="bg-surface/50 p-4 rounded-full mb-4 border border-surface-border">
+                    <SearchX className="size-8 text-text-muted" />
+                  </div>
+                  <h3 className="text-text-primary font-bold mb-2">
+                    No results found
+                  </h3>
+                  <p className="text-text-muted text-xs font-mono max-w-sm">
+                    We couldn&apos;t find any items matching your current
+                    filters and search query. Try adjusting them to see more
+                    results.
+                  </p>
+                </div>
+              }
             />
 
             {/* Footer / Pagination */}
